@@ -1,14 +1,20 @@
 (function(){
+    // localStorage.clear()
     var list = document.querySelector('#list'),
         enter = document.querySelector('#enter'),
         item = document.querySelector('#item');
-    
-    enter.addEventListener('click',function(e){
-        e.preventDefault();
-        list.innerHTML += '<li>' + item.value + '</li>';
-        store();
-        item.value = "";
-    })
+        enter.addEventListener('click',function(e){
+            if(item.value){
+                e.preventDefault();
+                list.innerHTML += '<li>' + item.value + '</li>';
+                store();
+                // alert(item.value)
+
+                item.value = "";
+            }else{
+                alert("Cannot add empty task!")
+            }
+        })
     
     list.addEventListener('click',function(e){
         var t = e.target;
@@ -27,6 +33,7 @@
     function getValues() {
         var storedValues = window.localStorage.myitems;
         if(!storedValues) {
+            // alert("initial")
             list.innerHTML = 
                         '<li>Attend club meeting</li>'+
                         '<li>Go to Market</li>'+

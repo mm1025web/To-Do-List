@@ -1,3 +1,23 @@
+function search() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("list");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+function show(){
+    document.getElementById("myInput").style.width = 300+'px';
+}
+
 (function(){
     // localStorage.clear()
     var list = document.querySelector('#list'),
@@ -45,7 +65,8 @@
         }
     }
     getValues();
-    
+
+
     let greyC="#f1ebe5",redC="#ffb0b0",blueC="#a8d5ff",greenC="#bdff9f";
     let body = document.getElementById("body"),title = document.getElementById("heading")
     document.getElementById("default").addEventListener('click',function(){
